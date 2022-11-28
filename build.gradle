@@ -1,0 +1,36 @@
+plugins {
+    id 'java-library'
+}
+
+repositories {
+    mavenCentral()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+dependencies {
+    implementation 'org.testng:testng:7.6.1'
+    testImplementation (
+            'com.codeborne:selenide:6.9.0',
+            'org.junit.jupiter:junit-jupiter:5.9.0'
+    )
+}
+
+test {
+    useJUnitPlatform()
+}
+help {
+    doFirst {
+        println ""
+        println "************************************************************************ "
+        println "***                                                                  *** "
+        println "*** Welcome to https://github.com/AraslanovRuslan/demoqa.com_AR16!            *** "
+        println "***                                                                  *** "
+        println "*** ./gradlew help                                                   *** "
+        println "***                                                                  *** "
+        println "************************************************************************ "
+        println ""
+    }
+}
