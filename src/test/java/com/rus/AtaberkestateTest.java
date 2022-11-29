@@ -35,7 +35,7 @@ public class AtaberkestateTest {
     }
 
     @MethodSource
-    @ParameterizedTest(name = "Проверка наличия кнопок из списка {1} на сайте propimo в локали {0}")
+    @ParameterizedTest(name = "Проверка наличия кнопок из списка {1} на сайте ataberkestate в локали {0}")
     void searchButTest(String locale, String buttons){
        $$("#block-language-switcher").find(text(locale)).click();
        $$("#block-osnovnayanavigaciya a").filter(visible)
