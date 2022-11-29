@@ -5,7 +5,6 @@ import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.List;
@@ -16,12 +15,12 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class AtaberkestateTest {
+public class Ee24Test {
 
 
     @BeforeEach
     void setUp() {
-        open("https://www.ataberkhomes.com/");
+        open("https://ee24.com/");
         Configuration.browserSize = "1920x1080";
         Configuration.holdBrowserOpen = true;
     }
@@ -29,16 +28,16 @@ public class AtaberkestateTest {
 
     static Stream<Arguments> searchButTest(){
         return Stream.of(
-                Arguments.of("EN", List.of("Home", "All objects", "Online property request form", "About us", "Services", "Testimonials", "Contacts")),
-                Arguments.of("RU", List.of("Главная", "Все объекты", "Онлайн подбор вариантов", "О нас", "Услуги", "Отзывы", "Контакты"))
+                Arguments.of("EN", List.of("Add listing", "Articles", "Select country", "En", "Ру", "Log in")),
+                Arguments.of("Ру", List.of("Добавить объявления", "Статьи", "Выбрать страну", "En", "Ру", "Войти"))
                         );
     }
 
     @MethodSource
-    @ParameterizedTest(name = "Проверка наличия кнопок из списка {1} на сайте ataberkestate в локали {0}")
+    @ParameterizedTest(name = "Проверка наличия кнопок из списка {1} на сайте ee24 в локали {0}")
     void searchButTest(String locale, List<String> buttons){
-       $$("#block-language-switcher").find(text(locale)).click();
-       $$("#block-osnovnayanavigaciya a").filter(visible)
+       $$(".language-links a").find(text(locale)).click();
+       $$("[class=\"nav navbar-nav navbar-right\"] a").filter(visible)
                .shouldHave(CollectionCondition.texts(buttons));
     }
 }
