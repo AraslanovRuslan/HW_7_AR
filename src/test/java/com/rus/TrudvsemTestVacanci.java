@@ -24,7 +24,7 @@ public class TrudvsemTestVacanci {
 })
 
     @ParameterizedTest(name = "Проверка наличия вакансий {1}" +
-            "в поисковой выдаче по запросу {0}")
+            " в поисковой выдаче по запросу {0}")
     void searchVacanciTest(String searchVacanci, String expectedVacanci){
         $("[href=\"/vacancy/search\"]").click();
         $("[class=\"search-content__input-control input__control\"]")
